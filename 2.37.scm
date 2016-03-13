@@ -1,4 +1,5 @@
-#lang planet neil/sicp
+;#lang planet neil/sicp
+#lang scheme
 
 (define (accumulate op initial sequence)
   (if (null? sequence)
@@ -8,7 +9,7 @@
 
 (define (accumulate-n op init seqs)
   (if (null? (car seqs))
-      nil
+      '()
       (cons (accumulate op init (map car seqs))
             (accumulate-n op init (map cdr seqs)))))
 
@@ -19,7 +20,7 @@
   (map (lambda (row) (dot-product row v)) m))
 
 (define (transpose mat)
-  (accumulate-n cons nil mat))
+  (accumulate-n cons '() mat))
 
 ;(transpose (list (list 1 2) (list 3 4)))
 
